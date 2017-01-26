@@ -146,6 +146,11 @@ public class AddressBook {
     private static final int PERSON_DATA_INDEX_EMAIL = 2;
 
     /**
+     * The number of arguments in an input command
+     */
+    private static final int NUMBER_OF_ARGUMENTS_IN_INPUT_COMMAND = 2;
+    
+    /**
      * The number of data elements for a single person.
      */
     private static final int PERSON_DATA_COUNT = 3;
@@ -394,8 +399,8 @@ public class AddressBook {
      * @return  size 2 array; first element is the command type and second element is the arguments string
      */
     private static String[] splitCommandWordAndArgs(String rawUserInput) {
-        final String[] split =  rawUserInput.trim().split("\\s+", 2);
-        return split.length == 2 ? split : new String[] { split[0] , "" }; // else case: no parameters
+        final String[] split =  rawUserInput.trim().split("\\s+", NUMBER_OF_ARGUMENTS_IN_INPUT_COMMAND);
+        return split.length == NUMBER_OF_ARGUMENTS_IN_INPUT_COMMAND ? split : new String[] { split[0] , "" }; // else case: no parameters
     }
 
     /**
