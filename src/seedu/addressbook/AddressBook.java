@@ -936,11 +936,10 @@ public class AddressBook {
         if (!isPersonDataExtractableFrom(encoded)) {
             return Optional.empty();
         }
-        final String[] decodedPerson = makePersonFromData(
-                extractNameFromPersonString(encoded),
-                extractPhoneFromPersonString(encoded),
-                extractEmailFromPersonString(encoded)
-        );
+        final String personName = extractNameFromPersonString(encoded);
+        final String personPhone = extractPhoneFromPersonString(encoded);
+        final String personEmail = extractEmailFromPersonString(encoded);
+        final String[] decodedPerson = makePersonFromData(personName, personPhone, personEmail);
         // check that the constructed person is valid
         return isPersonDataValid(decodedPerson) ? Optional.of(decodedPerson) : Optional.empty();
     }
