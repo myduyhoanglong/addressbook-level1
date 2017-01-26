@@ -1153,6 +1153,15 @@ public class AddressBook {
     private static String removePrefixSign(String s, String sign) {
         return s.replace(sign, "");
     }
+    
+    /**
+     * Removes prefix in fullString
+     */
+    private static String removePrefix(String fullString, String prefix) {
+    	if (fullString.indexOf(prefix) == 0)
+    		return fullString.replaceFirst(prefix, "");
+    	return fullString;
+    }
 
     /**
      * Splits a source string into the list of substrings that were separated by whitespace.
