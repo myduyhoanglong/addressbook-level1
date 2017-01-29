@@ -489,7 +489,7 @@ public class AddressBook {
         for (String[] person : getAllPersonsInAddressBook()) {
             final Set<String> wordsInName = new HashSet<>(splitByWhitespace(getNameFromPerson(person)));
             final Collection<String> wordsInNameLowerCase = convertStringCollectiontoLowerCase(wordsInName);
-            if (!Collections.disjoint(wordsInName, keywords)) {
+            if (!Collections.disjoint(wordsInNameLowerCase, keywordsLowerCase)) {
                 matchedPersons.add(person);
             }
         }
