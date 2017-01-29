@@ -51,7 +51,7 @@
   find bet
   # does not match if none have keyword
   find 23912039120
-  # matching should be case-sensitive
+  # matching should be case-insensitive
   find betsy
 
   # find unique keyword
@@ -59,7 +59,7 @@
   # find multiple with same keyword
   find Dickson
   # find multiple with some keywords
-  find Charlie Betsy
+  find Charlie betsy
 
 ##########################################################
 # test delete person command
