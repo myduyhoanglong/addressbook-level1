@@ -19,6 +19,7 @@ import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.HashSet;
+import java.util.Iterator;
 import java.util.Optional;
 import java.util.Scanner;
 import java.util.Set;
@@ -477,20 +478,37 @@ public class AddressBook {
     }
 
     /**
-     * Retrieves all persons in the full model whose names contain some of the specified keywords.
+     * Retrieves all persons in the full model whose names contain some of the specified keywords, case insensitive.
      *
      * @param keywords for searching
      * @return list of persons in full model with name containing some of the keywords
      */
     private static ArrayList<String[]> getPersonsWithNameContainingAnyKeyword(Collection<String> keywords) {
         final ArrayList<String[]> matchedPersons = new ArrayList<>();
+        final Collection<String> keywordsLowerCase = convertStringCollectiontoLowerCase(keywords);
         for (String[] person : getAllPersonsInAddressBook()) {
             final Set<String> wordsInName = new HashSet<>(splitByWhitespace(getNameFromPerson(person)));
+            final Collection<String> wordsInNameLowerCase = convertStringCollectiontoLowerCase(wordsInName);
             if (!Collections.disjoint(wordsInName, keywords)) {
                 matchedPersons.add(person);
             }
         }
         return matchedPersons;
+    }
+    
+    /**
+     * Lower case all strings in given collection
+     * 
+     * @param collection of strings for converting
+     * @return collection of strings in lower case
+     */
+    private static Collection<String> convertStringCollectiontoLowerCase(Collection<String> keys) {
+    	ArrayList<String> list = new ArrayList<String>();
+    	Iterator<String> it = keys.iterator();
+    	while (it.hasNext()) {
+    		list.add(it.next().toLowerCase());
+    	}
+    	return list;
     }
 
     /**
